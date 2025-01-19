@@ -1,0 +1,6 @@
+@vuevue.Server_HostAddress = http://localhost:5144
+
+GET {{vuevue.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
