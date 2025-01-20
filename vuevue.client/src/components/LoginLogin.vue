@@ -1,37 +1,59 @@
 <template>
-  <div class="auth-container">
+  <div class="w-80 mx-auto p-6 border border-gray-300 rounded-lg bg-gray-100">
     <div v-if="isLogin">
-      <h2>Logowanie</h2>
+      <h2 class="text-2xl font-semibold mb-4">Logowanie</h2>
       <form @submit.prevent="login">
-        <div class="form-group">
-          <label for="login-email">Nazwa</label>
-          <input type="text" id="login-email" v-model="loginEmail" required />
+        <div class="mb-4">
+          <label for="login-email" class="block text-sm font-medium text-gray-700">Nazwa</label>
+          <input type="text"
+                 id="login-email"
+                 v-model="loginEmail"
+                 required
+                 class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
         </div>
-        <div class="form-group">
-          <label for="login-password">Hasło</label>
-          <input type="password" id="login-password" v-model="loginPassword" required />
+        <div class="mb-4">
+          <label for="login-password" class="block text-sm font-medium text-gray-700">Hasło</label>
+          <input type="password"
+                 id="login-password"
+                 v-model="loginPassword"
+                 required
+                 class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
         </div>
-        <button v-hover-color type="submit">Zaloguj</button>
-        <p>
-          Nie masz konta? <a href="#" @click="switchToRegister">Zarejestruj się</a>
+        <button type="submit"
+                class="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-400">
+          Zaloguj
+        </button>
+        <p class="mt-4 text-center text-sm">
+          Nie masz konta? <a href="#" @click="switchToRegister" class="text-blue-500 hover:underline">Zarejestruj się</a>
         </p>
       </form>
     </div>
 
     <div v-else>
-      <h2>Rejestracja</h2>
+      <h2 class="text-2xl font-semibold mb-4">Rejestracja</h2>
       <form @submit.prevent="register">
-        <div class="form-group">
-          <label for="register-email">Nazwa</label>
-          <input type="text" id="register-email" v-model="registerEmail" required />
+        <div class="mb-4">
+          <label for="register-email" class="block text-sm font-medium text-gray-700">Nazwa</label>
+          <input type="text"
+                 id="register-email"
+                 v-model="registerEmail"
+                 required
+                 class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
         </div>
-        <div class="form-group">
-          <label for="register-password">Hasło</label>
-          <input type="password" id="register-password" v-model="registerPassword" required />
+        <div class="mb-4">
+          <label for="register-password" class="block text-sm font-medium text-gray-700">Hasło</label>
+          <input type="password"
+                 id="register-password"
+                 v-model="registerPassword"
+                 required
+                 class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
         </div>
-        <button v-hover-color type="submit">Zarejestruj się</button>
-        <p>
-          Masz już konto? <a href="#" @click="switchToLogin">Zaloguj się</a>
+        <button type="submit"
+                class="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-400">
+          Zarejestruj się
+        </button>
+        <p class="mt-4 text-center text-sm">
+          Masz już konto? <a href="#" @click="switchToLogin" class="text-blue-500 hover:underline">Zaloguj się</a>
         </p>
       </form>
     </div>
@@ -83,75 +105,9 @@
         this.registerPassword = "";
       },
     },
-    directives: {
-      // Dyrektywa zmieniająca tło przy najechaniu
-      hoverColor: {
-        // Hook, który będzie uruchamiany po zamontowaniu elementu
-        mounted(el) {
-          el.addEventListener('mouseenter', () => {
-            el.style.backgroundColor = '#4caf00'; // Tło na zielone przy najechaniu
-          });
-
-          el.addEventListener('mouseleave', () => {
-            el.style.backgroundColor = ''; // Tło wraca do normalnego po zjechaniu
-          });
-        },
-      },
-    },
   };
 </script>
 
 <style scoped>
-  .auth-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-  p {
-    text-align: center;
-  }
-
-  a {
-    color: #007bff;
-    cursor: pointer;
-  }
-
-    a:hover {
-      text-decoration: underline;
-    }
+  /* Usuwamy niestandardowe style CSS, ponieważ Tailwind CSS już zajmuje się stylami */
 </style>

@@ -1,5 +1,7 @@
 import przystankiService from "./Przystanki.js"
 import axios from 'axios';
+import { useAuthStore } from '@/stores/Auth.js';
+//import authPlugin from 'authPlugin'
 
 
 const UserUrl = {
@@ -11,20 +13,24 @@ const UserUrl = {
 }
 
 const userService = {
+  store() {
+    return useAuthStore();
+  },
 
   getAuthToken() {
-    return localStorage.getItem("token");
+    //this.$clearToken();
+    return this.store().getToken;
   },
 
   async login(userName, password) {
-    const token = localStorage.getItem("token");
+    const token = this.getAuthToken();
     if (token !== null) {
-      localStorage.removeItem("token");
+      this.store().clearToken();
     }
 
     const result = await this._login(userName, password);
     if (result && result.token) {
-      localStorage.setItem("token", result.token);
+      this.store().setToken(result.token);
       return "Ok";
     }
 

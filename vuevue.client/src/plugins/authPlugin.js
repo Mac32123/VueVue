@@ -1,18 +1,18 @@
-import { useAuthStore } from '../stores/auth';
+import { useAuthStore } from '../stores/Auth.js';
 
 export default {
   install(app) {
-    app.config.globalProperties.$getToken = function () {
+    app.config.globalProperties.$getToken = () => {
       // Dostęp do magazynu Pinia
       const authStore = useAuthStore();
-      return authStore.getToken();
+      return authStore.getToken;
     };
-    app.config.globalProperties.$setToken = function () {
+    app.config.globalProperties.$setToken = (token) => {
       // Dostęp do magazynu Pinia
       const authStore = useAuthStore();
-      return authStore.setToken();
+      return authStore.setToken(token);
     };
-    app.config.globalProperties.$clearToken = function () {
+    app.config.globalProperties.$clearToken = () => {
       // Dostęp do magazynu Pinia
       const authStore = useAuthStore();
       return authStore.clearToken();
